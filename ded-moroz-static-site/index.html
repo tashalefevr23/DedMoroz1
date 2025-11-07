@@ -60,12 +60,34 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;letter
 .price{font-weight:800;font-size:20px;}
 .price-note{font-size:12px;color:#5E7593;margin-top:8px;}
 .footer{border-top:1px solid var(--border);padding:28px 0 40px;background:#F0F5FF;}
-@media(max-width:920px){
-  .grid-2,.grid-3{grid-template-columns:1fr;}
-  .tile{min-width:84px;}
-  .countdown-wrap{align-items:flex-start;margin-left:0;margin-top:16px;}
-  .hero-row{flex-direction:column;}
-  .hero-col{max-width:100%;}
+
+/* === Mobile refinements === */
+@media (max-width: 768px){
+  .hero__content{ padding:64px 0 48px; }
+  h1{ font-size: 36px; line-height: 1.1; }
+  .lead{ font-size: 16px; }
+  .hero--overlay::before{ background-position:50% 18%; } /* show faces */
+  .program__bullets{ font-size: 15px; }
+  .grid-2, .grid-3{ grid-template-columns: 1fr; }
+  .card{ border-radius:14px; }
+  .program__cta{ flex-direction: column; align-items: flex-start; gap: 10px; }
+  .price{ font-size: 18px; }
+  .btn, .cta, .btn.ghost{ padding: 13px 16px; border-radius:10px; }
+  .card .btn{ width: 100%; text-align: center; } /* full-width buttons inside cards */
+  .cta-small{ padding:10px 14px; border-radius:10px; }
+  .countdown{ gap:8px; }
+  .tile{ min-width: 76px; padding: 8px 10px; }
+  .tile .num{ font-size: 20px; }
+  .tile .lbl{ font-size: 11px; }
+  .nav__inner{ padding-inline: 4px; }
+  .nav__links{ gap:10px; flex-wrap: wrap; }
+}
+@media (max-width: 420px){
+  h1{ font-size: 30px; }
+  .lead{ font-size: 15px; }
+  .tile{ min-width: 64px; }
+  .tile .num{ font-size: 18px; }
+  .hero-col{ min-width: 0; }
 }
 </style>
 </head>
@@ -181,7 +203,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;letter
   </div></footer>
 
 <script>
-// Countdown to the *nearest upcoming* New Year (Jan 1 of next year)
+// Countdown to the nearest upcoming New Year
 (function(){
   function nextNY(){
     const now = new Date();
@@ -195,7 +217,7 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;letter
   function pad(n){ return n.toString().padStart(2,'0'); }
   function tick(){
     const now = new Date();
-    if(now >= target){ target = nextNY(); } // roll over on Jan 1
+    if(now >= target){ target = nextNY(); }
     let diff = Math.max(0, target - now);
     const days = Math.floor(diff / 86400000); diff -= days*86400000;
     const hours = Math.floor(diff / 3600000); diff -= hours*3600000;
