@@ -94,6 +94,10 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;letter
   .tile .num{ font-size: 18px; }
   .hero-col{ min-width: 0; }
 }
+
+/* sticky offset so anchors don't hide under header */
+#kids, #adults, #contact { scroll-margin-top: 72px; }
+
 </style>
 </head>
 <body>
@@ -206,6 +210,39 @@ h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;letter
   <footer class="footer"><div class="container" style="display:flex;justify-content:space-between;align-items:center;">
     <div>© 2025 Дед Мороз и Снегурочка в Твери</div><a href="#top">Наверх ↑</a>
   </div></footer>
+
+<script>
+// Smooth scroll with sticky header offset (works in Safari/older browsers)
+(function(){
+  var nav = document.querySelector('.nav');
+  function navHeight(){ return nav ? nav.getBoundingClientRect().height : 0; }
+  function smoothScrollTo(targetId){
+    var el = document.getElementById(targetId);
+    if(!el) return;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - navHeight() - 8;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var href = a.getAttribute('href');
+    var id = href.slice(1);
+    if(!id) return;
+    var el = document.getElementById(id);
+    if(!el) return;
+    e.preventDefault();
+    smoothScrollTo(id);
+    // update URL hash without jump
+    history.pushState(null, '', '#' + id);
+  });
+  // Respect hash on page load
+  if(location.hash){
+    var id = location.hash.slice(1);
+    setTimeout(function(){ smoothScrollTo(id); }, 50);
+  }
+})();
+</script>
+
 
 <script>
 // Countdown to nearest New Year
