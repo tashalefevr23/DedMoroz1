@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Дед Мороз и Снегурочка в Твери</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F9FE;--bg2:#EEF5FF;--text:#0E2A47;--muted:#445D7E;--accent:#9C83F9;--gold:#C89B3C;--card:#FFFFFF;--border:#DCE6F7;}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+html{scroll-behavior:smooth;}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;letter-spacing:.2px;}
+.container{width:min(1100px,92%);margin:0 auto;}
+/* Header */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:56px;padding-block:8px;}
+.brand{font-weight:800;letter-spacing:.2px;text-decoration:none;color:inherit;white-space:nowrap;font-size:clamp(13px,2.6vw,18px);}
+.nav__links{display:flex;gap:clamp(6px,2vw,14px);align-items:center;flex-wrap:wrap;justify-content:flex-end;max-width:58%;}
+.nav__links a{text-decoration:none;font-size:clamp(12px,2.2vw,14px);opacity:.95;color:inherit;padding:6px 8px;border-radius:8px;}
+.cta-small{background:var(--accent);padding:6px 10px;border-radius:8px;color:white !important;}
+/* Hero */
+.hero--overlay{min-height:calc(100vh - 64px);display:flex;align-items:flex-end;position:relative;isolation:isolate;color:#fff;}
+/* Desktop default image */
+.hero--overlay::before{content:'';position:absolute;inset:0;background:url('images/RDO_0030.jpg') center/cover no-repeat;opacity:.42;z-index:-2;background-position:50% 35%;}
+/* Gradient overlay */
+.hero--overlay::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,47,80,.10) 0%,rgba(17,47,80,.55) 55%,rgba(17,47,80,.88) 100%);z-index:-1;}
+/* Mobile swap image */
+@media (max-width: 768px){
+  .hero--overlay::before{ background-image:url('images/RDO_0029.jpg'); background-position:50% 18%; }
+}
+.hero__content{padding:80px 0 64px;}
+.hero-row{display:flex;gap:24px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;}
+.hero-col{max-width:680px;min-width:280px;flex:1 1 520px;}
+.lead{color:#D9E6F7;}
+.emph{color:#234A83;}
+/* Buttons */
+.cta,.btn{display:inline-block;background:var(--accent);color:white;text-decoration:none;padding:11px 14px;border-radius:8px;font-weight:700;border:none;box-shadow:0 4px 14px rgba(156,131,249,.25);transition:transform .15s, box-shadow .15s, background-color .15s;}
+.cta:hover,.btn:hover{background:#A998FA;transform:translateY(-1px);box-shadow:0 8px 22px rgba(156,131,249,.3);}
+.btn.ghost{background:transparent;border:1px solid rgba(156,131,249,.6);color:#fff;}
+/* Countdown right */
+.countdown-wrap{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;}
+.countdown{display:flex;gap:10px;margin-top:6px;flex-wrap:wrap;justify-content:flex-end;}
+.tile{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);min-width:96px;padding:10px 12px;border-radius:12px;text-align:center;}
+.tile .num{font-weight:800;font-size:24px;line-height:1;}
+.tile .lbl{font-size:12px;opacity:.9;}
+.countdown-caption{margin-top:6px;font-size:14px;opacity:.95;}
+/* Sections */
+.section{padding:80px 0;}
+.section.alt-1{background:var(--bg);}
+.section.alt-2{background:var(--bg2);}
+.section.alt-3{background:#FFFFFF;}
+.title-center h2{text-align:center;margin:0;font-size:34px;}
+.grid{display:grid;gap:16px;}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.card{border:1px solid var(--border);background:var(--card);border-radius:16px;box-shadow:0 10px 30px rgba(14,42,71,.08);}
+.p-20{padding:24px;}
+#kids .card.p-20,#adults .card.p-20{width:90%;margin-left:auto;margin-right:auto;}
+.program__bullets{list-style:none;padding:0;margin:12px 0;}
+.program__bullets li::before{content:'✦ ';color:#C89B3C;}
+.program__cta{display:flex;gap:12px;align-items:center;margin-top:12px;flex-wrap:wrap;}
+.price{font-weight:800;font-size:20px;}
+.price-note{font-size:12px;color:#5E7593;margin-top:8px;}
+.footer{border-top:1px solid var(--border);padding:28px 0 40px;background:#F0F5FF;}
+/* Mobile polish */
+@media (max-width: 900px){
+  .nav__links{max-width:64%;}
+}
+@media (max-width: 768px){
+  .hero__content{ padding:64px 0 48px; }
+  h1{ font-size: 36px; line-height: 1.1; }
+  .lead{ font-size: 16px; }
+  .program__bullets{ font-size: 15px; }
+  .grid-2, .grid-3{ grid-template-columns: 1fr; }
+  .card{ border-radius:14px; }
+  .program__cta{ flex-direction: column; align-items: flex-start; gap: 10px; }
+  .price{ font-size: 18px; }
+  .btn, .cta, .btn.ghost{ padding: 13px 16px; border-radius:10px; }
+  .card .btn{ width: 100%; text-align: center; }
+  .cta-small{ padding:8px 10px; }
+  .countdown{ gap:8px; }
+  .tile{ min-width: 76px; padding: 8px 10px; }
+  .tile .num{ font-size: 20px; }
+  .tile .lbl{ font-size: 11px; }
+  .nav__inner{ min-height: 52px; }
+}
+@media (max-width: 420px){
+  h1{ font-size: 30px; }
+  .lead{ font-size: 15px; }
+  .tile{ min-width: 64px; }
+  .tile .num{ font-size: 18px; }
+  .hero-col{ min-width: 0; }
+}
+</style>
+</head>
+<body>
+  <!-- Header -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top">Дед Мороз и Снегурочка в Твери</a>
+      <div class="nav__links">
+        <a href="#kids">Для детей</a>
+        <a href="#adults">Для взрослых</a>
+        <a href="#contact" class="cta-small">Контакты</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="top" class="hero--overlay">
+    <div class="container hero__content">
+      <div class="hero-row">
+        <div class="hero-col">
+          <h1>Дед Мороз и Снегурочка</h1>
+          <p class="lead">Несём волшебство в каждый дом ❤</p>
+          <ul class="program__bullets">
+            <li>Опыт работы — около 10 лет</li>
+            <li>Премиум-костюмы и реквизит</li>
+            <li>Тёплые, тактичные и живые интерактивы</li>
+          </ul>
+          <div class="program__cta">
+            <a class="cta" href="#kids">Программы для детей</a>
+            <a class="btn ghost" href="#adults">Для взрослых</a>
+          </div>
+        </div>
+        <div class="countdown-wrap" aria-live="polite">
+          <div class="countdown" id="ny-countdown">
+            <div class="tile"><div class="num" id="d">00</div><div class="lbl">дней</div></div>
+            <div class="tile"><div class="num" id="h">00</div><div class="lbl">часов</div></div>
+            <div class="tile"><div class="num" id="m">00</div><div class="lbl">минут</div></div>
+            <div class="tile"><div class="num" id="s">00</div><div class="lbl">секунд</div></div>
+          </div>
+          <div class="countdown-caption">До Нового года осталось</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Kids -->
+  <section class="container section alt-1" id="kids">
+    <div class="title-center"><h2><span style="color:#C89B3C">Дед Мороз</span> и Снегурочка для детей</h2></div>
+    <div class="grid grid-2" style="margin-top:16px;">
+      <div class="card p-20">
+        <h3>Новогодняя сказка — 30 минут</h3>
+        <p class="emph" style="font-size:16px;">Дед Мороз и Снегурочка помогут вашему малышу почувствовать себя главным героем Нового года.</p>
+        <ul class="program__bullets">
+          <li>Загадки на смекалку от мудрого волшебника</li>
+          <li>Подвижные зимние игры со Снегурочкой</li>
+          <li>И, конечно, магия! Волшебные фокусы помогут поверить в новогоднее чудо даже взрослым!</li>
+        </ul>
+        <p class="emph" style="font-size:15px;"><b>Бонус:</b> В финале каждый ребенок получит небольшой персональный подарок из резиденции Деда Мороза!</p>
+        <div class="program__cta">
+          <div class="price">5500 ₽</div>
+          <a class="btn" href="#contact">Забронировать</a>
+        </div>
+        <div class="price-note">цены актуальны до 29 декабря, программы на 30 и 31 декабря рассчитываются индивидуально</div>
+      </div>
+
+      <div class="card p-20">
+        <h3>Магия новогодней встречи — 15 минут</h3>
+        <p class="emph" style="font-size:16px;">Устройте детям незабываемую встречу с чудом!</p>
+        <ul class="program__bullets">
+          <li>Трогательная встреча и поздравления</li>
+          <li>Подвижная танцевальная игра со Снегурочкой</li>
+          <li>Вручение заветного подарка из мешка Деда Мороза</li>
+        </ul>
+        <div class="program__cta">
+          <div class="price">3500 ₽</div>
+          <a class="btn" href="#contact">Забронировать</a>
+        </div>
+        <div class="price-note">цены актуальны до 29 декабря, программы на 30 и 31 декабря рассчитываются индивидуально</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Adults -->
+  <section class="container section alt-2" id="adults">
+    <div class="title-center"><h2><span style="color:#C89B3C">Новогодний хоровод</span> для взрослых</h2></div>
+    <div class="card p-20" style="margin-top:16px;">
+      <h3>30 минут + 10 минут фотосессия</h3>
+      <ul class="program__bullets">
+        <li><b>Изысканные интерактивы:</b> тактичные и весёлые игры, в которых участвуют все</li>
+        <li><b>Зимние испытания:</b> музыкальные, остроумные и чуть авантюрные</li>
+        <li><b>Новогодние баттлы:</b> танцевальные и караоке — бьём только рекорды и лёд неловкости</li>
+      </ul>
+      <p class="emph" style="font-size:16px;">Финальная фотосессия «Как в детстве»: В ходе фотосессии посадка на колени к главному зимнему волшебнику одобрена регламентом :)</p>
+      <div class="program__cta">
+        <a class="btn" href="https://t.me/tasha_lef" target="_blank" rel="noreferrer">Напишите нам — рассчитаем стоимость</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacts -->
+  <section class="container section alt-3" id="contact">
+    <div class="title-center"><h2>Связаться с нами</h2></div>
+    <div class="grid grid-3" style="margin-top:16px;">
+      <div class="card p-20"><div class="muted">Телефон</div><a class="btn" href="tel:+79806399030">+7 (980) 639-90-30</a></div>
+      <div class="card p-20"><div class="muted">Telegram</div><a class="btn" href="https://t.me/tasha_lef" target="_blank" rel="noreferrer">Написать в Telegram</a></div>
+      <div class="card p-20"><div class="muted">WhatsApp</div><a class="btn" href="https://wa.me/79806399030" target="_blank" rel="noreferrer">Написать в WhatsApp</a></div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+    <div>© 2025 Дед Мороз и Снегурочка в Твери</div><a href="#top">Наверх ↑</a>
+  </div></footer>
+
+<script>
+// Countdown to nearest New Year
+(function(){
+  function nextNY(){ const n=new Date(); return new Date(n.getFullYear()+1,0,1,0,0,0); }
+  let target=nextNY();
+  const d=document.getElementById('d'), h=document.getElementById('h'), m=document.getElementById('m'), s=document.getElementById('s');
+  function pad(n){return n.toString().padStart(2,'0');}
+  function tick(){
+    const now=new Date(); if(now>=target) target=nextNY();
+    let diff=Math.max(0,target-now);
+    const days=Math.floor(diff/86400000); diff-=days*86400000;
+    const hours=Math.floor(diff/3600000); diff-=hours*3600000;
+    const mins=Math.floor(diff/60000); diff-=mins*60000;
+    const secs=Math.floor(diff/1000);
+    d.textContent=pad(days); h.textContent=pad(hours); m.textContent=pad(mins); s.textContent=pad(secs);
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
